@@ -1,25 +1,56 @@
 package br.com.user.domain;
 
-import br.com.user.domain.NomeCompleto;
-import br.com.user.domain.UserId;
-import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
+import br.com.user.domain.dtos.UserDTO;
 
-import java.io.Serializable;
+import java.util.UUID;
 
-@Builder(toBuilder = true)
-@Getter(AccessLevel.PACKAGE)
-public class User  implements Serializable {
+public class User {
 
-    private final UserId id;
+    private UUID userId;
+    private String primeiroNome;
+    private String segundoNome;
+    private String emailContato;
+    private Number telefoneContato;
 
-    @NotNull
-    private final NomeCompleto nomeCompleto;
+    public User(UUID userId, String primeiroNome, String segundoNome, String emailContato, Number telefoneContato)
+    {
+        this.userId = userId;
+        this.primeiroNome = primeiroNome;
+        this.segundoNome = segundoNome;
+        this.emailContato = emailContato;
+        this.telefoneContato = telefoneContato;
+    }
 
+    public UUID getUserId() {
+        return userId;
+    }
 
-    @NotNull
-    private final Email email;
+    public String getPrimeiroNome() {
+        return primeiroNome;
+    }
+
+    public String getSegundoNome() {
+        return segundoNome;
+    }
+
+    public String getEmailContato() {
+        return emailContato;
+    }
+
+    public Number getTelefoneContato() {
+        return telefoneContato;
+    }
+
+    public User(UserDTO userDTO) {
+        this.primeiroNome = userDTO.getPrimeiroNome();
+        this.segundoNome = userDTO.getSegundoNome();
+        this.emailContato = userDTO.getEmailContato();
+        this.telefoneContato = userDTO.getTelefoneContato();
+    }
+
+    public UserDTO toUserDTO()
+    {
+        return new UserDTO(this.primeiroNome, this.segundoNome, this.emailContato, this.telefoneContato);
+    }
 
 }
