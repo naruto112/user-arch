@@ -21,13 +21,12 @@ public class UserRepository implements UserRepositoryPort {
 
     @Override
     public List<User> buscarUsers() {
-        List<UserEntity> userEntities = this.springUserRepository.findAll();
-        return null;
+        return this.springUserRepository.findAll().stream().map(UserEntity::toUser).toList();
     }
 
     @Override
     public User buscarUserId(UUID userId) {
-        return null;
+        return this.springUserRepository.findById(userId).get().toUser();
     }
 
     @Override
@@ -44,6 +43,7 @@ public class UserRepository implements UserRepositoryPort {
             userEntity = this.springUserRepository.findById(user.getUserId()).get();
             userEntity.updateUser(user);
         }
+
 
         this.springUserRepository.save(userEntity);
     }

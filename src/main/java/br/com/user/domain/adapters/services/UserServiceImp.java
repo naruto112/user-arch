@@ -6,6 +6,7 @@ import br.com.user.domain.ports.interfaces.UserServicePort;
 import br.com.user.domain.ports.repositories.UserRepositoryPort;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class UserServiceImp implements UserServicePort {
@@ -24,6 +25,13 @@ public class UserServiceImp implements UserServicePort {
         List<UserDTO> userDTOS = users.stream().map(User::toUserDTO).collect(Collectors.toList());
         return userDTOS;
     }
+
+    @Override
+    public UserDTO buscaUserByID(UUID id) {
+        User user = this.userRepositoryPort.buscarUserId(id);
+        return user.toUserDTO();
+    }
+
     @Override
     public void criarUser(UserDTO userDTO) {
         User user = new User(userDTO);

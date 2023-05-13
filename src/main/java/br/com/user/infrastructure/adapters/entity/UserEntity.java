@@ -15,7 +15,7 @@ public class UserEntity {
     private String primeiroNome;
     private String segundoNome;
     private String emailContato;
-    private Number telefoneContato;
+    private Long telefoneContato;
 
     public UserEntity(){}
 

@@ -7,9 +7,9 @@ public class UserDTO {
     private String primeiroNome;
     private String segundoNome;
     private String emailContato;
-    private Number telefoneContato;
+    private Long telefoneContato;
 
-    public UserDTO(String primeiroNome, String segundoNome, String emailContato, Number telefoneContato)
+    public UserDTO(String primeiroNome, String segundoNome, String emailContato, Long telefoneContato)
     {
         this.primeiroNome = primeiroNome;
         this.segundoNome = segundoNome;
@@ -29,7 +29,7 @@ public class UserDTO {
         return emailContato;
     }
 
-    public Number getTelefoneContato() {
+    public Long getTelefoneContato() {
         return telefoneContato;
     }
 

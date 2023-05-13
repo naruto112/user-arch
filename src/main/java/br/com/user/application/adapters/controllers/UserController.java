@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("users")
@@ -25,6 +26,13 @@ public class UserController {
     public List<UserDTO> getUsers()
     {
         return userServicePort.buscaUser();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO getByIdUser(@PathVariable UUID id)
+    {
+        return userServicePort.buscaUserByID(id);
     }
 
 

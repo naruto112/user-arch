@@ -10,9 +10,9 @@ public class User {
     private String primeiroNome;
     private String segundoNome;
     private String emailContato;
-    private Number telefoneContato;
+    private Long telefoneContato;
 
-    public User(UUID userId, String primeiroNome, String segundoNome, String emailContato, Number telefoneContato)
+    public User(UUID userId, String primeiroNome, String segundoNome, String emailContato, Long telefoneContato)
     {
         this.userId = userId;
         this.primeiroNome = primeiroNome;
@@ -37,7 +37,7 @@ public class User {
         return emailContato;
     }
 
-    public Number getTelefoneContato() {
+    public Long getTelefoneContato() {
         return telefoneContato;
     }
 
